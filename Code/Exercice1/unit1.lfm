@@ -1,0 +1,130 @@
+object Form1: TForm1
+  Left = 417
+  Height = 319
+  Top = 145
+  Width = 1031
+  Caption = 'Auteurs'
+  ClientHeight = 319
+  ClientWidth = 1031
+  OnCreate = FormCreate
+  LCLVersion = '2.0.6.0'
+  object DBGrid1: TDBGrid
+    Left = 66
+    Height = 108
+    Top = 169
+    Width = 426
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 77
+    Height = 36
+    Top = 116
+    Width = 411
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 36
+    ClientWidth = 411
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 1
+  end
+  object BTConnect: TButton
+    Left = 874
+    Height = 25
+    Top = 62
+    Width = 75
+    Caption = 'Connexion'
+    ParentBidiMode = False
+    OnClick = BTConnectClick
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 711
+    Height = 15
+    Top = 64
+    Width = 90
+    Caption = 'Hors Connection'
+    ParentColor = False
+  end
+  object BTOut: TButton
+    Left = 828
+    Height = 25
+    Top = 231
+    Width = 75
+    Caption = 'Quitter'
+    OnClick = BTOutClick
+    TabOrder = 3
+  end
+  object MySQL56Connection1: TMySQL56Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'bibliotest'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    CharSet = 'utf8'
+    HostName = 'localhost'
+    SkipLibraryVersionCheck = False
+    left = 45
+    top = 33
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = MySQL56Connection1
+    left = 160
+    top = 32
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'auteur_id'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nom'
+        DataType = ftString
+        Precision = -1
+        Size = 90
+      end    
+      item
+        Name = 'prénom'
+        DataType = ftString
+        Precision = -1
+        Size = 90
+      end    
+      item
+        Name = 'nationalité'
+        DataType = ftString
+        Precision = -1
+        Size = 90
+      end    
+      item
+        Name = 'année_naiss'
+        DataType = ftSmallint
+        Precision = -1
+      end>
+    Database = MySQL56Connection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from auteurs'
+    )
+    Params = <>
+    left = 272
+    top = 32
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    left = 384
+    top = 32
+  end
+end
