@@ -1,9 +1,4 @@
 # Lazarus / Free Pascal
-*.exe
-*.o
-*.ppu
-*.compiled
-*.bak
-*.lps
+
 backup/
 lib/
